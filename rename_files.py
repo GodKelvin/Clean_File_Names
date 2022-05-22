@@ -31,10 +31,5 @@ def main():
     remove_from_file = sys.argv[3]
     clean_files(input_dir, output_dir, remove_from_file)
     print("# Concluido com sucesso.\n# Verificar pasta de destino: %s" %output_dir)
-    
+
 main()
-
-
-
-
-    
