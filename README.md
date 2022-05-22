@@ -1,3 +1,6 @@
+## Sobre
+Removendo partes indesejadas dos nomes de arquivos de um determinado diretório.
+
 ### Entrada: 
 Diretório dos arquivos a serem renomeados, Diretório de Destino, string a ser removida do nome dos arquivos.
 
