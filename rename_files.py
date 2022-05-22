@@ -14,11 +14,10 @@ def clean_files(path_dir, output_dir, trash):
     for file in files:
         src_file = path_dir+file
         without_trash = file.lower().split(trash)
-        print(without_trash)
         new_name_and_move = output_dir + "".join(without_trash)
 
         if(os.path.isfile(new_name_and_move)):
-            print("Arquivo ja existe")
+            print("> Arquivo ja existe -> %s" %new_name_and_move)
         else:
             shutil.copyfile(src_file, new_name_and_move)
 
@@ -31,6 +30,7 @@ def main():
     output_dir = sys.argv[2]
     remove_from_file = sys.argv[3]
     clean_files(input_dir, output_dir, remove_from_file)
+    print("# Concluido com sucesso.\n# Verificar pasta de destino: %s" %output_dir)
 main()
 
 
