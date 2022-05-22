@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
-from xxlimited import new
+import sys
+import shutil
 
 def create_dir(path_dir):
     path = Path(path_dir)
@@ -9,8 +10,9 @@ def create_dir(path_dir):
 def clean_files(path_dir, output_dir, trash):
     create_dir(output_dir)
     files = os.listdir(path_dir)
-    
+
     for file in files:
+        src_file = path_dir+file
         without_trash = file.lower().split(trash)
         print(without_trash)
         new_name_and_move = output_dir + "".join(without_trash)
@@ -18,15 +20,17 @@ def clean_files(path_dir, output_dir, trash):
         if(os.path.isfile(new_name_and_move)):
             print("Arquivo ja existe")
         else:
-            os.rename(path_dir+file, new_name_and_move)
+            shutil.copyfile(src_file, new_name_and_move)
 
 
 def main():
-    input_dir = "test/"
-    output_dir = "output/"
-    remove_from_file = "arquivo"
+    if(len(sys.argv) < 4):
+        print("-->> ERROR: Parametros de entrada pendentes")
+        return 
+    input_dir = sys.argv[1]
+    output_dir = sys.argv[2]
+    remove_from_file = sys.argv[3]
     clean_files(input_dir, output_dir, remove_from_file)
-
 main()
 
 
